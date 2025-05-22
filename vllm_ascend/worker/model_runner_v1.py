@@ -1214,16 +1214,16 @@ class NPUModelRunner:
         """
         import torch_npu
         kv_caches: Dict[str, torch.Tensor] = {}
-        if not (vllm_version_is("0.8.5") or vllm_version_is("0.8.5.post1")):
-            self.input_batch = InputBatch(
-                max_num_reqs=self.max_num_reqs,
-                max_model_len=self.model_config.max_model_len,
-                max_num_batched_tokens=self.max_num_tokens,
-                device=self.device,
-                pin_memory=True,
-                vocab_size=self.model_config.get_vocab_size(),
-                kv_cache_config=kv_cache_config,
-            )
+        # if not (vllm_version_is("0.8.5") or vllm_version_is("0.8.5.post1")):
+        #     self.input_batch = InputBatch(
+        #         max_num_reqs=self.max_num_reqs,
+        #         max_model_len=self.model_config.max_model_len,
+        #         max_num_batched_tokens=self.max_num_tokens,
+        #         device=self.device,
+        #         pin_memory=True,
+        #         vocab_size=self.model_config.get_vocab_size(),
+        #         kv_cache_config=kv_cache_config,
+        #     )
 
         for kv_cache_group in kv_cache_config.kv_cache_groups:
             kv_cache_spec = kv_cache_group.kv_cache_spec
